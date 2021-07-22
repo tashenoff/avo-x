@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png" />
+    <title>1</title>
+    <link type="text/css" href="./assets/css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="./assets/css/main.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Jura&display=swap" rel="stylesheet">
+
+    <script type="text/javascript" src="assets/js/main.js" defer></script>
+</head>
+
+<body x-data="{ 'isDialogOpen': false }" @keydown.escape="isDialogOpen = false">
+
+    <section id="home" class="home relative overflow-hidden">
+        <!-- <video autoplay muted loop id="myVideo">
+            <source src="./assets/img/bg.mp4" type="video/mp4">
+        </video> -->
+        <div class="flex fixed w-full justify-center lg:px-0 z-60  mx-auto delay-100 transition-colors duration-300 ease-in-out"
+            x-data="{ atTop: true }" :class="{ 'bg-primary ' : !atTop }"
+            @scroll.window="atTop = (window.pageYOffset > 40) ? false : true">
+
+
+
+
+            <div class="container flex items-center">
+                <div class="navbar w-full flex justify-center">
+
+
+
+
+                    <nav class="flex items-center lg:px-0 px-5 justify-between relative z-40 flex-wrap py-6 fixed w-full top-0"
+                        x-data="{ isOpen: false }" @keydown.escape="isOpen = false"
+                        :class="{ 'shadow-lg bg-transparent' : isOpen }">
+
+                        <!--Logo etc-->
+                        <div class="flex items-center flex-shrink-0 text-white mr-6">
+                            <div class="" href="#">
+                                <img class="logo w-28 h-10 " src="./assets/img/logo.svg" alt="">
+                            </div>
+                        </div>
+
+                        <div class="lg:hidden block font-bold">
+
+
+                            <div>8775 533 1450</div>
+                        </div>
+
+                        <!--Toggle button (hidden on large screens)-->
+                        <button @click="isOpen = !isOpen" type="button"
+                            class="block lg:hidden p-2 text-white hover:text-white focus:outline-none focus:text-white"
+                            :class="{ 'transition transform-180': isOpen }">
+                            <svg class="h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path x-show="isOpen" fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z" />
+                                <path x-show="!isOpen" fill-rule="evenodd"
+                                    d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />
+                            </svg>
+                        </button>
+
+
+                        <!--Menu-->
+                        <div class="w-full lg:px-0 px-5 flex-grow lg:flex lg:items-center lg:w-auto lg:relative absolute lg:top-0 top-20 left-0 z-50"
+                            :class="{ 'block shadow-3xl': isOpen, 'hidden': !isOpen, 'bg-primary' : isOpen }"
+                            @click.away="isOpen = false" x-show.transition="true">
+                            <ul class="pt-6 lg:pt-0 list-reset lg:flex items-center">
+                                <li class="mr-3">
+                                    <a class="cursor-pointer inline-block py-2 px-2 text-white no-underline"
+                                        @click="$scroll('#home'), isOpen = false">
+                                        Главная</a>
+                                    </a>
+                                </li>
+                                <li class="mr-3">
+                                    <a class="cursor-pointer inline-block text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-2"
+                                        @click="$scroll('#about'), isOpen = false">
+                                        О нас
+                                    </a>
+                                </li>
+
+                                <li class="mr-3">
+                                    <a class="cursor-pointer inline-block text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-2"
+                                        @click="$scroll('#product'), isOpen = false">Продукты
+                                    </a>
+                                </li>
+
+
+                                <!-- <li class="mr-3">
+                                    <a class="inline-block text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-2"
+                                        href="#" @click="$scroll('#second'), isOpen = false">отзывы
+                                    </a>
+                                </li> -->
+
+
+                                <li class="mr-3 lg:mb-0 mb-5">
+                                    <a class="cursor-pointer inline-block text-white no-underline hover:text-gray-200 hover:text-underline py-2 px-2"
+                                        @click="$scroll('#contact'), isOpen = false">Контакты
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                </div>
+                </nav>
+
+
+
+                <div class="navbar__right justify-end w-full items-center relative z-50 lg:flex hidden ">
+                    <div class="pr-5 font-bold flex">
+                        <div class="flex items-center mr-5">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                              </svg> -->
+
+                            <!-- <div>+7 (747) 167-91-01</div> -->
+                        </div>
+                        <div class="flex items-center">
+
+
+                            <div>8775 533 14510</div>
+                            <div class="w-10 h-10 ml-5">
+                                <svg enable-background="new 0 0 512 512" version="1.1" viewBox="0 0 512 512"
+                                    xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M256.064,0h-0.128l0,0C114.784,0,0,114.816,0,256c0,56,18.048,107.904,48.736,150.048l-31.904,95.104  l98.4-31.456C155.712,496.512,204,512,256.064,512C397.216,512,512,397.152,512,256S397.216,0,256.064,0z"
+                                        fill="#4CAF50" />
+                                    <path
+                                        d="m405.02 361.5c-6.176 17.44-30.688 31.904-50.24 36.128-13.376 2.848-30.848 5.12-89.664-19.264-75.232-31.168-123.68-107.62-127.46-112.58-3.616-4.96-30.4-40.48-30.4-77.216s18.656-54.624 26.176-62.304c6.176-6.304 16.384-9.184 26.176-9.184 3.168 0 6.016 0.16 8.576 0.288 7.52 0.32 11.296 0.768 16.256 12.64 6.176 14.88 21.216 51.616 23.008 55.392 1.824 3.776 3.648 8.896 1.088 13.856-2.4 5.12-4.512 7.392-8.288 11.744s-7.36 7.68-11.136 12.352c-3.456 4.064-7.36 8.416-3.008 15.936 4.352 7.36 19.392 31.904 41.536 51.616 28.576 25.44 51.744 33.568 60.032 37.024 6.176 2.56 13.536 1.952 18.048-2.848 5.728-6.176 12.8-16.416 20-26.496 5.12-7.232 11.584-8.128 18.368-5.568 6.912 2.4 43.488 20.48 51.008 24.224 7.52 3.776 12.48 5.568 14.304 8.736 1.792 3.168 1.792 18.048-4.384 35.52z"
+                                        fill="#FAFAFA" />
+
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <button @click="isDialogOpen = true"
+                        class=" focus:outline-none py-3 px-5 bg-secondary rounded-full uppercase text-sm tracking-wide text-white font-bold hover:bg-red-400 cursor-pointer transition flex items-center ">
+
+                        <span>
+                            Заказать звонок
+                        </span>
+
+
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-100 h-full flex justify-center items-center">
+
+            <div class="text-center flex flex-col items-center relative z-50">
+                <h1 class="home__title lg:text-8xl text-3x1 mb-5">Создание сайтов</br> в Астане</h1>
+                <h2 class="home__sub-title">!</h2>
+                <button @click="isDialogOpen = true"
+                    class="focus:outline-none py-4 px-6 bg-green lg:w-1/1 text-black w-1/1 rounded-full mt-10 uppercase text-sm tracking-wide font-bold hover:bg-green-400 cursor-pointer transition ">
+                    Получить адекватную рассценку</button>
+            </div>
+
+        </div>
+
+        <div class="arrow w-full absolute bottom-10 flex items-center justify-center">
+            <img x-data x-on:click="$scroll('#about')" class="relative z-50 cursor-pointer focus:animate-spin"
+                src="./assets/img/arrow.svg" alt="">
+
+        </div>
+
+    </section>
+
+    <section id='about' class="my-20 text-black">
+        <div class="container mx-auto">
+
+    </section>
+
+
+    <section class="py-10 text-black">
+        <div class="container mx-auto">
+            <div class="flex flex-col items-center w-full">
+                <h1 class="home__sub-title">Мы очень рады встретить вас!</h1>
+                <p class="py-10 w-1/2 text-center">Behind the word mountains, far from the countries Vokalia and Conson
+                    antia, there seedBehind the word mountains, far from the countries ints Vokalia and Conson antia,
+                    there seed Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias aliquam labore
+                    sapiente impedit saepe maiores dolores sed rerum, expedita rem soluta veniam totam deserunt vitae
+                    eum blanditiis! Molestiae, doloremque eveniet.</p>
+
+            </div>
+            <div class="">
+                <div class="grid grid-cols-3">
+                    <div class="flex flex-col items-center font-bold uppercase">Дизайн</div>
+                    <div class="flex flex-col items-center">Маркетинг</div>
+                    <div class="flex flex-col items-center">Разработка</div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </section>
+
+
+    <section class="text-black bg-gray">
+        <div class="container mx-auto mt-10">
+            <div class="flex flex-col items-center text-center relative pt-10">
+                <div class="w-14 h-14 bg-primary rounded-full absolute -top-8"></div>
+                <h1 class="lg:text-4xl text-3x1 home__sub-title">Что мы предлагаем</h1>
+
+                <p class="w-1/2 py-10">Фронт end: команда Yona избавить вас от необходимости волноваться о
+                    внешней
+                    составляющей
+                    проекта. Широкий спектр услуг обеспечит заказчику и разработчику гибкость в исполнении
+                    проекта.
+                </p>
+            </div>
+
+            <div class="mt-10" x-data="{active: 0}">
+                <div class="flex  overflow-hidden -mb-px justify-center">
+                    <button
+                        class="w-1/4 font-bold p-5 uppercase rounded-full border border-primary border-opacity-20 rounded-r-none"
+                        x-on:click.prevent="active = 0"
+                        x-bind:class="{'bg-primary text-white': active === 0}">Эконом</button>
+                    <button
+                        class="w-1/4 font-bold px-4 py-2 uppercase rounded-full border border-primary border-opacity-20 rounded-l-none"
+                        x-on:click.prevent="active = 1"
+                        x-bind:class="{'bg-primary text-white': active === 1}">Продвинутый</button>
+
+                </div>
+                <div class="">
+                    <div class="p-4 space-y-2" x-show="active === 0">
+
+
+
+
+
+
+                        <section id='product'>
+                            <div class="container mx-auto">
+
+
+
+                                <div x-data="{swiper: null}" x-init="swiper = new Swiper($refs.container, {
+                                        loop: true,
+                                        slidesPerView: 1,
+                                        spaceBetween: 0,
+                                       
+                                    
+                                        breakpoints: {
+                                          640: {
+                                            slidesPerView: 1,
+                                            spaceBetween: 0,
+                                          },
+                                          768: {
+                                            slidesPerView: 2,
+                                            spaceBetween: 0,
+                                          },
+                                          1024: {
+                                            slidesPerView: 3,
+                                            spaceBetween: -13,
+                                          },
+                                        },
+                                      })" class="relative w-full mx-auto flex flex-row">
+                                    <div class="absolute inset-y-0 left-0 z-10 flex items-center">
+                                        <button @click="swiper.slidePrev()"
+                                            class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+                                            <svg viewBox="0 0 20 20" fill="currentColor"
+                                                class="chevron-left w-6 h-6 text-primary">
+                                                <path fill-rule="evenodd"
+                                                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+
+                                    <div class="swiper-container text-white" data-swiper-autoplay="2000"
+                                        x-ref="container">
+                                        <div class="swiper-wrapper">
+                                            <!-- Slides -->
+                                            <div class="swiper-slide p-4">
+                                                <div class="flex flex-col rounded-lg shadow overflow-hidden">
+                                                    <div class="flex-shrink-0">
+                                                        <div
+                                                            class="h-50 w-full bg-primary bg-opacity-80 flex flex-col items-center justify-center p-5 bg-secondary">
+                                                            <div
+                                                                class="z-60 relative  flex flex-col items-center content-between">
+                                                                <div class="flex flex-col items-center mb-5">
+                                                                    <div class="w-10 h-10 bg-white rounded-full mb-5">
+                                                                    </div>
+                                                                    <h1 class="text-lg card__title">Landing Page</h1>
+                                                                </div>
+                                                                <p
+                                                                    class="text-sm text-center border-b border-white border-opacity-20 pb-5">
+                                                                    Позволяет Вашим клиентам
+                                                                    оплачивать
+                                                                    товары/услуги
+                                                                    в любое время и с любой точки мира на Ваш
+                                                                    корпоративный счет, благодаря
+                                                                    чему
+                                                                    продажи компании в онлайн становятся бесперебойными.
+                                                                </p>
+
+                                                                <div class="flex flex-col w-full items-center mt-5">
+                                                                    <button @click="isDialogOpen = true"
+                                                                        class="focus:outline-none underline  py-3 px-5 rounded-full uppercase text-sm tracking-wide text-white font-bold hover:bg-red-400 cursor-pointer transition flex items-center ">
+                                                                        Оставить заявку
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="swiper-slide p-4">
+                                                <div class="flex flex-col rounded-lg shadow overflow-hidden">
+                                                    <div class="flex-shrink-0">
+                                                        <div
+                                                            class="h-50 w-full bg-primary bg-opacity-80 flex flex-col items-center justify-center p-5">
+                                                            <div
+                                                                class="z-60 relative  flex flex-col items-center content-between">
+                                                                <div class="flex flex-col items-center mb-5">
+                                                                    <div class="w-10 h-10 bg-white rounded-full mb-5">
+                                                                    </div>
+                                                                    <h1 class="text-lg card__title">Сайт визитка</h1>
+                                                                </div>
+                                                                <p
+                                                                    class="text-sm text-center border-b border-white border-opacity-20 pb-5">
+                                                                    Позволяет Вашим клиентам
+                                                                    оплачивать
+                                                                    товары/услуги
+                                                                    в любое время и с любой точки мира на Ваш
+                                                                    корпоративный счет, благодаря
+                                                                    чему
+                                                                    продажи компании в онлайн становятся бесперебойными.
+                                                                </p>
+
+                                                                <div class="flex flex-col w-full items-center mt-5">
+                                                                    <button @click="isDialogOpen = true"
+                                                                        class="focus:outline-none underline  py-3 px-5 rounded-full uppercase text-sm tracking-wide text-white font-bold hover:bg-red-400 cursor-pointer transition flex items-center ">
+                                                                        Оставить заявку
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="swiper-slide p-4">
+                                                <div class="flex flex-col rounded-lg shadow overflow-hidden">
+                                                    <div class="flex-shrink-0">
+                                                        <div
+                                                            class="h-50 w-full bg-primary bg-opacity-80 flex flex-col items-center justify-center p-5">
+                                                            <div
+                                                                class="z-60 relative  flex flex-col items-center content-between">
+                                                                <div class="flex flex-col items-center mb-5">
+                                                                    <div class="w-10 h-10 bg-white rounded-full mb-5">
+                                                                    </div>
+                                                                    <h1 class="text-lg card__title">Копоративный</h1>
+                                                                </div>
+                                                                <p
+                                                                    class="text-sm text-center border-b border-white border-opacity-20 pb-5">
+                                                                    Позволяет Вашим клиентам
+                                                                    оплачивать
+                                                                    товары/услуги
+                                                                    в любое время и с любой точки мира на Ваш
+                                                                    корпоративный счет, благодаря
+                                                                    чему
+                                                                    продажи компании в онлайн становятся бесперебойными.
+                                                                </p>
+
+                                                                <div class="flex flex-col w-full items-center mt-5">
+                                                                    <button @click="isDialogOpen = true"
+                                                                        class="focus:outline-none underline  py-3 px-5 rounded-full uppercase text-sm tracking-wide text-white font-bold hover:bg-red-400 cursor-pointer transition flex items-center ">
+                                                                        Оставить заявку
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="absolute inset-y-0 right-0 z-10 flex items-center">
+                                        <button @click="swiper.slideNext()"
+                                            class="bg-white -mr-2 lg:-mr-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+                                            <svg viewBox="0 0 20 20" fill="currentColor"
+                                                class="chevron-right w-6 h-6 text-primary">
+                                                <path fill-rule="evenodd"
+                                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </section>
+
+
+                    </div>
+                    <div class="p-4 space-y-2" x-show.transition.in="active === 1">
+
+
+                        hghg
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+    </section>
+
+    <section class="my-20 text-white bg-primary p-10">
+        <div class="container mx-auto">
+            <div class="text-center w-full pb-10">
+                <h1 class="lg:text-4xl text-3x1 home__sub-title">Почему выбирают нас</h1>
+            </div>
+            <div class="grid grid-cols-4 gap-4 my-10">
+
+
+                <div class="div bg-white p-10 text-black rounded-lg flex items-center">
+                    <img class="w-10 h-10 mr-5" src="./assets/img/icons/17.svg" alt="">
+                    <span class="font-bold uppercase"> Рисуем сайты "с нуля"</span>
+                </div>
+                <div class="div bg-white p-10 text-black rounded-lg flex items-center">
+                    <img class="w-10 h-10 mr-5" src="./assets/img/icons/17.svg" alt="">
+                    <span class="font-bold uppercase"> Наши сайты быстрее</span>
+                </div>
+                <div class="div bg-white p-10 text-black rounded-lg flex items-center">
+                    <img class="w-10 h-10 mr-5" src="./assets/img/icons/17.svg" alt="">
+                    <span class="font-bold uppercase">Адекватные цены</span>
+                </div>
+                <div class="div bg-white p-10 text-black rounded-lg flex items-center">
+                    <img class="w-10 h-10 mr-5" src="./assets/img/icons/17.svg" alt="">
+                    <span class="font-bold uppercase"> шустрый менеджер</span>
+                </div>
+                <div class="div bg-white p-10 text-black rounded-lg flex items-center">
+                    <img class="w-10 h-10 mr-5" src="./assets/img/icons/17.svg" alt="">
+                    <span class="font-bold uppercase"> Вкусный кофе</span>
+                </div>
+                <div class="div bg-white p-10 text-black rounded-lg flex items-center">
+                    <img class="w-10 h-10 mr-5" src="./assets/img/icons/17.svg" alt="">
+                    <span class="font-bold uppercase"> Программист экстраверт</span>
+                </div>
+                <div class="div bg-white p-10 text-black rounded-lg flex items-center">
+                    <img class="w-10 h-10 mr-5" src="./assets/img/icons/17.svg" alt="">
+                    <span class="font-bold uppercase"> Текст пишем сами</span>
+                </div>
+                <div class="div p-10 text-white rounded-lg flex items-center bg-secondary">
+                    <img class="w-10 h-10 mr-5" src="./assets/img/icons/17.svg" alt="">
+                    <span class="font-bold uppercase"> Оставить свой отзыв</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="my-20 text-black">
+        <div class="container mx-auto">
+            <div class="text-center w-full pb-10">
+                <h1 class="lg:text-4xl text-3x1 home__sub-title">Этап работы</h1>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="my-20 text-black">
+        <div class="container mx-auto">
+            <div class="flex flex-col items-center w-full pb-10">
+                <h1 class="lg:text-4xl text-3x1 home__sub-title">Остались вопросы?</h1>
+                <p class="py-10 w-1/2 text-center sub-title ">Оставьте свои контактные данные и мы гарантируем вам, что вы получите самую лучшую консультацию!</p>
+
+                    <button @click="isDialogOpen = true" class="focus:outline-none py-4 px-6 bg-green lg:w-1/1 text-black w-1/1 rounded-full uppercase text-sm tracking-wide font-bold hover:bg-green-400 cursor-pointer transition ">
+                        Получить адекватную рассценку</button>
+            </div>
+
+            
+            
+        </div>
+    </section>
+
+
+
+    <!-- overlay -->
+    <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="isDialogOpen"
+        :class="{ 'fixed inset-0 z-60  flex items-start justify-center': isDialogOpen }">
+        <!-- dialog -->
+        <div class="bg-white shadow-2xl m-4 sm:m-8 text-black" x-show="isDialogOpen" @click.away="isDialogOpen = false">
+            <div class="flex justify-between items-center border-b p-2 text-xl">
+                <h6 class="text-xl font-bold">Свяжитесь с нами</h6>
+                <button type="button" @click="isDialogOpen = false">✖</button>
+            </div>
+            <div class="">
+                <!-- content -->
+
+
+
+                <form class="flex flex-col w-full p-10  text-black" action="">
+                    <label for="">Ваше имя</label>
+                    <input class="border border-black border-opacity-20 py-2 px-6 rounded-full mb-5 focus:outline-none"
+                        type="text">
+                    <label for="">Номер телефона</label>
+                    <input class="border border-black border-opacity-20 py-2 px-6 rounded-full focus:outline-none"
+                        type="number">
+                    <button
+                        class=" w-full focus:outline-none py-2 px-6 bg-green text-black rounded-full mt-10 uppercase text-sm tracking-wide font-bold hover:bg-green-400 cursor-pointer transition ">
+                        оставить заявку</button>
+                </form>
+
+
+
+
+            </div>
+        </div><!-- /dialog -->
+    </div><!-- /overlay -->
+
+
+
+    <footer class="bg-primary flex items-center justify-center">
+        <span class="uppercase tracking-widest">yona.kz все права защищены</span>
+    </footer>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpine-collective/alpine-magic-helpers/dist/scroll.js"></script>
+
+
+</body>
+
+
+
+</html>
